@@ -1,0 +1,442 @@
+openapi: 3.0.3
+info:
+  title: Your Project API
+  version: 1.0.0
+  description: Your project description
+paths:
+  /api/advices/:
+    get:
+      operationId: advices_list
+      description: Получение/добавление советов.
+      tags:
+      - advices
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Advice'
+          description: ''
+    post:
+      operationId: advices_create
+      description: Получение/добавление советов.
+      tags:
+      - advices
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Advice'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Advice'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Advice'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Advice'
+          description: ''
+  /api/advices/{id}/:
+    get:
+      operationId: advices_retrieve
+      description: Получение/добавление советов.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Совет.
+        required: true
+      tags:
+      - advices
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Advice'
+          description: ''
+    put:
+      operationId: advices_update
+      description: Получение/добавление советов.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Совет.
+        required: true
+      tags:
+      - advices
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Advice'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Advice'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Advice'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Advice'
+          description: ''
+    patch:
+      operationId: advices_partial_update
+      description: Получение/добавление советов.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Совет.
+        required: true
+      tags:
+      - advices
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAdvice'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAdvice'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAdvice'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Advice'
+          description: ''
+    delete:
+      operationId: advices_destroy
+      description: Получение/добавление советов.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Совет.
+        required: true
+      tags:
+      - advices
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/reviews/:
+    get:
+      operationId: reviews_list
+      description: Получение/добавление отзывов.
+      tags:
+      - reviews
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Review'
+          description: ''
+    post:
+      operationId: reviews_create
+      description: Получение/добавление отзывов.
+      tags:
+      - reviews
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Review'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Review'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Review'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+          description: ''
+  /api/reviews/{id}/:
+    get:
+      operationId: reviews_retrieve
+      description: Получение/добавление отзывов.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Отзыв.
+        required: true
+      tags:
+      - reviews
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+          description: ''
+    put:
+      operationId: reviews_update
+      description: Получение/добавление отзывов.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Отзыв.
+        required: true
+      tags:
+      - reviews
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Review'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Review'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Review'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+          description: ''
+    patch:
+      operationId: reviews_partial_update
+      description: Получение/добавление отзывов.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Отзыв.
+        required: true
+      tags:
+      - reviews
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedReview'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedReview'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedReview'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+          description: ''
+    delete:
+      operationId: reviews_destroy
+      description: Получение/добавление отзывов.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Отзыв.
+        required: true
+      tags:
+      - reviews
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    Advice:
+      type: object
+      description: Сериалайзер советов.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          title: Имя
+          maxLength: 250
+        text:
+          type: string
+          title: Совет
+        pub_date:
+          type: string
+          format: date
+          readOnly: true
+      required:
+      - id
+      - pub_date
+      - text
+    CourseEnum:
+      enum:
+      - first
+      - second
+      - third
+      - fourth
+      type: string
+      description: |-
+        * `first` - 1 курс
+        * `second` - 2 курс
+        * `third` - 3 курс
+        * `fourth` - 4 курс
+    PatchedAdvice:
+      type: object
+      description: Сериалайзер советов.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          title: Имя
+          maxLength: 250
+        text:
+          type: string
+          title: Совет
+        pub_date:
+          type: string
+          format: date
+          readOnly: true
+    PatchedReview:
+      type: object
+      description: Cериалайзер отзывов.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          title: Имя
+          maxLength: 250
+        course:
+          allOf:
+          - $ref: '#/components/schemas/CourseEnum'
+          title: Курс
+        text:
+          type: string
+          title: Отзыв
+        pub_date:
+          type: string
+          format: date
+          readOnly: true
+        teacherOrCourse:
+          type: integer
+          title: Преподаватель или курс
+    Review:
+      type: object
+      description: Cериалайзер отзывов.
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          title: Имя
+          maxLength: 250
+        course:
+          allOf:
+          - $ref: '#/components/schemas/CourseEnum'
+          title: Курс
+        text:
+          type: string
+          title: Отзыв
+        pub_date:
+          type: string
+          format: date
+          readOnly: true
+        teacherOrCourse:
+          type: integer
+          title: Преподаватель или курс
+      required:
+      - course
+      - id
+      - pub_date
+      - teacherOrCourse
+      - text
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
