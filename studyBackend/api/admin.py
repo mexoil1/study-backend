@@ -1,6 +1,6 @@
-from django.contrib import admin
 from django.contrib.admin import register, ModelAdmin
-from .models import Advice, Review, Teacher
+
+from .models import Advice, FAQ, Review, Teacher
 
 
 @register(Advice)
@@ -30,3 +30,10 @@ class TeacherAdmin(ModelAdmin):
     list_display = ("name",)
     search_fields = ("name",)
     list_filter = ("name",)
+
+
+@register(FAQ)
+class FAQAdmin(ModelAdmin):
+    list_display = ("question",)
+    search_fields = ("question",)
+    list_filter = ("question",)

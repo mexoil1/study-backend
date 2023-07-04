@@ -5,6 +5,8 @@ class Teacher(models.Model):
     """Модель преподавателя или курса."""
     name = models.CharField(max_length=250, verbose_name='ФИО или название')
     institute = models.CharField(max_length=250, verbose_name='Институт')
+    image = models.ImageField(upload_to='teachers/', verbose_name='Фотография')
+    contacts = models.TextField(verbose_name='Контакты')
 
     class Meta:
         ordering = ['name']
@@ -56,7 +58,7 @@ class Advice(models.Model):
         max_length=250,
         verbose_name='Имя',
         default='Anonymous')
-    
+
     text = models.TextField(verbose_name='Совет')
     pub_date = models.DateField(auto_now_add=True)
 
@@ -67,3 +69,16 @@ class Advice(models.Model):
 
     def __str__(self):
         return f'Совет от {self.name}, за {self.pub_date}'
+
+
+class FAQ(models.Model):
+    """Модель FAQ."""
+    question = models.CharField(max_length=200, verbose_name='Вопрос')
+    answer = models.CharField(max_length=200, verbose_name='Ответ')
+
+    class Meta:
+        verbose_name = 'FAQ'
+        verbose_name_plural = 'FAQ'
+
+    def __str__(self):
+        return self.question
