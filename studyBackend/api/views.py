@@ -1,8 +1,9 @@
 from rest_framework import viewsets
 from rest_framework import mixins
 
-from .models import Advice, FAQ, Review, Teacher
-from .serializers import AdviceSerializer, FAQSerializer, ReviewSerializer, TeacherSerializer
+from .models import Advice, Review, Teacher
+from .serializers import AdviceSerializer, ReviewReadSerializer, ReviewWriteSerializer, TeacherSerializer
+from .filters import TeacherFilterSet, ReviewFilterSet
 
 
 class ReviewViewSet(mixins.CreateModelMixin,
@@ -10,22 +11,20 @@ class ReviewViewSet(mixins.CreateModelMixin,
                     viewsets.GenericViewSet):
     """Получение/добавление отзывов."""
     queryset = Review.objects.all()
-    serializer_class = ReviewSerializer
+    filterset_class = ReviewFilterSet
+    search_fields = ('^teacherOrCourse',)
+
+    def get_serializer_class(self):
+        if self.request.method == 'POST':
+            return ReviewWriteSerializer
+        return ReviewReadSerializer
 
 
-class AdviceViewSet(mixins.CreateModelMixin,
-                    mixins.ListModelMixin,
+class AdviceViewSet(mixins.ListModelMixin,
                     viewsets.GenericViewSet):
     """Получение/добавление советов."""
     queryset = Advice.objects.all()
     serializer_class = AdviceSerializer
-
-
-class FAQViewSet(mixins.ListModelMixin,
-                 viewsets.GenericViewSet):
-    """FAQ"""
-    queryset = FAQ.objects.all()
-    serializer_class = FAQSerializer
 
 
 class TeacherViewSet(mixins.ListModelMixin,
@@ -33,3 +32,5 @@ class TeacherViewSet(mixins.ListModelMixin,
     """Получение списка учителей"""
     queryset = Teacher.objects.all()
     serializer_class = TeacherSerializer
+    filterset_class = TeacherFilterSet
+    search_fields = ('^name',)

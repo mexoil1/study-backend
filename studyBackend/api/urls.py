@@ -3,13 +3,13 @@ from django.urls import include, path
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
 
-from .views import AdviceViewSet, FAQViewSet, ReviewViewSet, TeacherViewSet
+from .views import AdviceViewSet, ReviewViewSet, TeacherViewSet
 
 app_name = 'api'
 router = DefaultRouter()
 router.register('reviews', ReviewViewSet)
 router.register('advices', AdviceViewSet)
-router.register('faq', FAQViewSet)
+
 router.register('teachers', TeacherViewSet)
 
 urlpatterns = [
